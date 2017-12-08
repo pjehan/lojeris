@@ -1,3 +1,26 @@
+<?php
+$liste_logement[0] =[
+  "titre" => "Gare sud",
+  "prix" => "445000",
+  "image"=> "property-01.jpg",
+  "dateCreation" => new DateTime("2017-06-12"),
+  "type" => "appartement",
+  "taille" => 320,
+  "nbChambres" => 2,
+  ] ;
+
+  $liste_logement[1] =[
+    "titre" => "Guadeloupe",
+    "prix" => "345000",
+    "image"=> "property-02.jpg",
+    "dateCreation" => new DateTime("2017-06-12"),
+    "type" => "appartement",
+    "taille" => 120,
+    "nbChambres" => 2,
+    ] ;
+
+
+ ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -66,33 +89,36 @@
             <div class="properties">
                 <article class="property">
                     <a href="#">
-                        <img src="images/property-01.jpg" alt="Gare sud">
+                        <img src="images/<?php echo $liste_logement[0]["image"];?>" alt="$liste_logement[0]["titre"]">
                         <footer class="overlay">
                             <div class="info">
-                                <div class="tag">245 000 €</div>
-                                <h3>Gare sud</h3>
+                                <div class="tag <?php echo ($liste_logement[0]["prix"] < 200000) ? "reduc" : ""; ?> ">
+                                  <?php echo $liste_logement[0]["prix"]; ?> €</div>
+                                <h3><?php echo $liste_logement[0]["titre"];?></h3>
                             </div>
                             <div class="more-info">
                                 <div class="property-info">
                                     <i class="fa fa-calendar"></i>
-                                    12/06/2017
+                                    <?php echo $liste_logement[0]["dateCreation"]->format("d/m/Y");?>
                                 </div>
                                 <div class="property-info">
                                     <i class="fa fa-tag"></i>
-                                    Appartement
+                                    <?php echo $liste_logement[0]["type"];?>
                                 </div>
                                 <div class="property-info">
                                     <i class="fa fa-expand"></i>
-                                    320m2
+                                      <?php echo $liste_logement[0]["taille"];?> m2
                                 </div>
                                 <div class="property-info">
                                     <i class="fa fa-bed"></i>
-                                    2
+                                    <?php echo $liste_logement[0]["nbChambres"]?>
                                 </div>
                             </div>
                         </footer>
                     </a>
                 </article>
+
+                
                 <article class="property">
                     <a href="#">
                         <img src="images/property-02.jpg" alt="Brequigny">
