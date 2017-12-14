@@ -18,6 +18,33 @@ $liste_logements [1] = [
     "taille" => 350,
     "nb_chambres" => 3
 ];
+$liste_logements [2] = [
+    "titre" => "Centre",
+    "prix" => 360000,
+    "image" => "property-03.jpg",
+    "date_creation" => new DateTime("2017-05-01"),
+    "type" => "Appartement",
+    "taille" => 450,
+    "nb_chambres" => 4
+];
+$liste_logements [3] = [
+    "titre" => "Campagne",
+    "prix" => 200000,
+    "image" => "property-04.jpg",
+    "date_creation" => new DateTime("2017-09-01"),
+    "type" => "Maison",
+    "taille" => 320,
+    "nb_chambres" => 2
+];
+$liste_logements [] = [
+    "titre" => "Saint Helier",
+    "prix" => 420000,
+    "image" => "property-05.jpg",
+    "date_creation" => new DateTime("2017-11-01"),
+    "type" => "Maison",
+    "taille" => 150,
+    "nb_chambres" => 3
+];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -85,153 +112,42 @@ $liste_logements [1] = [
             <section class="container">
                 <h2>Nos dernières offres</h2>
                 <div class="properties">
+                    <?php foreach ($liste_logements as $logement) : ?>
                     <article class="property">
                         <a href="#">
-                            <img src="images/<?php echo $liste_logements[0]["image"]; ?>" alt="<?php echo $liste_logements[0]["titre"]; ?>">
+                            <img src="images/<?php echo $logement["image"]; ?>" alt="<?php echo $liste_logements[0]["titre"]; ?>">
                             <footer class="overlay">
                                 <div class="info">
-                                    <div class="tag <?php echo ($liste_logements[0]["prix"] < 200000) ? "reduc" : ""; ?>">
-                                        <?php echo $liste_logements[0]["prix"]; ?> €
+                                    <div class="tag <?php echo ($logement["prix"] < 350000) ? "reduc" : ""; ?>">
+                                         <?php $prixchunk = trim(strrev(chunk_split(strrev($logement["prix"]),3, ' '))); ?>
+                                        <?php echo $prixchunk; ?> €
                                     </div>
-                                    <h3><?php echo $liste_logements[0]["titre"]; ?></h3>
+                                    <h3><?php echo $logement["titre"]; ?></h3>
                                 </div>
                                 <div class="more-info">
                                     <div class="property-info">
                                         <i class="fa fa-calendar"></i>
-                                        <?php echo $liste_logements[0]["date_creation"]->format("d/m/Y"); ?>
+                                        <?php echo $logement["date_creation"]->format("d/m/Y"); ?>
                                     </div>
                                     <div class="property-info">
                                         <i class="fa fa-tag"></i>
-                                        <?php echo $liste_logements[0]["type"]; ?>
+                                        <?php echo $logement["type"]; ?>
                                     </div>
                                     <div class="property-info">
                                         <i class="fa fa-expand"></i>
-                                        <?php echo $liste_logements[0]["taille"]; ?>m2
+                                        <?php echo $logement["taille"]; ?>m2
                                     </div>
                                     <div class="property-info">
                                         <i class="fa fa-bed"></i>
-                                        <?php echo $liste_logements[0]["nb_chambres"]; ?>
+                                        <?php echo $logement["nb_chambres"]; ?>
                                     </div>
                                 </div>
                             </footer>
                         </a>
                     </article>
-                    <article class="property">
-                        <a href="#">
-                            <img src="images/property-02.jpg" alt="Brequigny">
-                            <footer class="overlay">
-                                <div class="info">
-                                    <div class="tag">220 000 €</div>
-                                    <h3>Brequigny</h3>
-                                </div>
-                                <div class="more-info">
-                                    <div class="property-info">
-                                        <i class="fa fa-calendar"></i>
-                                        10/08/2017
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-tag"></i>
-                                        Maison
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-expand"></i>
-                                        320m2
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-bed"></i>
-                                        3
-                                    </div>
-                                </div>
-                            </footer>
-                        </a>
-                    </article>
-                    <article class="property">
-                        <a href="#">
-                            <img src="images/property-03.jpg" alt="Tabor">
-                            <footer class="overlay">
-                                <div class="info">
-                                    <div class="tag">320 000 €</div>
-                                    <h3>Tabor</h3>
-                                </div>
-                                <div class="more-info">
-                                    <div class="property-info">
-                                        <i class="fa fa-calendar"></i>
-                                        22/08/2017
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-tag"></i>
-                                        Maison
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-expand"></i>
-                                        320m2
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-bed"></i>
-                                        2
-                                    </div>
-                                </div>
-                            </footer>
-                        </a>
-                    </article>
-                    <article class="property">
-                        <a href="#">
-                            <img src="images/property-04.jpg" alt="Gare sud">
-                            <footer class="overlay">
-                                <div class="info">
-                                    <div class="tag">190 000 €</div>
-                                    <h3>Gare sud</h3>
-                                </div>
-                                <div class="more-info">
-                                    <div class="property-info">
-                                        <i class="fa fa-calendar"></i>
-                                        10/04/2017
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-tag"></i>
-                                        Appartement
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-expand"></i>
-                                        80m2
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-bed"></i>
-                                        2
-                                    </div>
-                                </div>
-                            </footer>
-                        </a>
-                    </article>
-                    <article class="property">
-                        <a href="#">
-                            <img src="images/property-05.jpg" alt="Cesson-Sevigne">
-                            <footer class="overlay">
-                                <div class="info">
-                                    <div class="tag">420 000 €</div>
-                                    <h3>Cesson-Sevigne</h3>
-                                </div>
-                                <div class="more-info">
-                                    <div class="property-info">
-                                        <i class="fa fa-calendar"></i>
-                                        14/05/2017
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-tag"></i>
-                                        Maison
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-expand"></i>
-                                        320m2
-                                    </div>
-                                    <div class="property-info">
-                                        <i class="fa fa-bed"></i>
-                                        4
-                                    </div>
-                                </div>
-                            </footer>
-                        </a>
-                    </article>
+                    
+                    <?php endforeach; ?>
+                    
                 </div>
             </section>
 
